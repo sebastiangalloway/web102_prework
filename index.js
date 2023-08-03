@@ -50,6 +50,7 @@ function addGamesToPage(games) {
             <p> Backers: ${games[i].backers} </p>
             <img class="game-img" src="${games[i].img}" > 
         `;
+        gamesCard.innerHTML = display;
 
 
         // append the game to the games-container
