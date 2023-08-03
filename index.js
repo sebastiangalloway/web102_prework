@@ -55,6 +55,7 @@ function addGamesToPage(games) {
 
 
         // append the game to the games-container
+        
         gamesContainer.append(gamesCard); 
 
     }
@@ -164,7 +165,7 @@ const unfundedCount = GAMES_JSON.reduce ( (acc, game) => {
 }, 0);
 
 // create a string that explains the number of unfunded games using the ternary operator
-const displayStr = `A total of ${totalRaised.toLocaleString('en-US')} has been raised for ${totalGames-unfundedCount} games. 
+const displayStr = `A total of ${totalRaised.toLocaleString('en-US')} has been raised for ${totalGames} games. 
                     Currently, ${(unfundedCount > 1 ? unfundedCount  + " games remain" : "1 game remains")}  unfunded. We need your help to fund these amazing games!`
 
 // create a new DOM element containing the template string and append it to the description container
@@ -185,7 +186,13 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 });
 
 // use destructuring and the spread operator to grab the first and second games
-
+let [firstFunded, secondFunded, ...others] = sortedGames;
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+const firstGame = document.createElement("p");
+firstGame.innerHTML = firstFunded.name;
+firstGameContainer.append(firstGame); 
 
 // do the same for the runner up item
+const secondGame = document.createElement("p");
+secondGame.innerHTML = secondFunded.name;
+secondGameContainer.append(secondGame); 
